@@ -1,0 +1,64 @@
+// Apply the basic project type plugins.
+apply plugin: 'application'
+apply plugin: 'java'
+// apply plugin: 'scala'
+// apply plugin: 'groovy'
+
+// Integrate static analysis and code metric tools.
+apply plugin: 'checkstyle'
+// apply plugin: 'findbugs'
+apply plugin: 'jacoco'
+apply plugin: 'jdepend'
+apply plugin: 'pmd'
+
+// If using an IDE other than VIM, IntelliJ IDEA seems to be the least terrible.
+apply plugin: 'idea'
+
+// Set application metadata.
+applicationName = "TODO"
+description     = "TODO"
+mainClassName   = "Main"
+version         = "TODO"
+
+// By default: build, document, and generate unit test code coverage report.
+defaultTasks 'build', 'javadoc', 'jacocoTestReport'
+
+// Declare where to find the dependencies of this project.
+repositories {
+    mavenCentral()
+}
+
+// Declare the dependencies for production and test code.
+dependencies {
+    // Require the Groovy language for compiling production code.
+    // compile 'org.codehaus.groovy:groovy-all:2.2.0'
+
+    // Require the Groovy language for compiling test code.
+    // testCompile 'org.codehaus.groovy:groovy-all:2.2.0'
+
+    // Require the Scala language for compiling production code.
+    // compile 'org.scala-lang:scala-library:2.11.1'
+
+    // Require the Scala language for compiling test code.
+    // testCompile 'org.scala-lang:scala-library:2.11.1'
+
+    // The production code uses the SLF4J logging API at compile time.
+    //compile 'org.slf4j:slf4j-api:1.7.5'
+
+    // Require the JUnit unit testing framework for compiling test code.
+    testCompile "junit:junit:4.11"
+}
+
+// Allow passing the standard input through on gradle run.
+run {
+    standardInput = System.in
+}
+
+// Generate code coverage reports for use with Jenkins.
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination "${buildDir}/coverage"
+    }
+}
