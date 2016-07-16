@@ -16,9 +16,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/vim-scripts/Tabular.git
-[submodule "bundle/surround"]
-	path = bundle/surround
-	url = https://github.com/vim-scripts/surround.vim.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
@@ -61,3 +58,6 @@
 [submodule "bundle/pdv"]
 	path = bundle/pdv
 	url = https://github.com/tobyS/pdv.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
