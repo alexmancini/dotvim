@@ -19,9 +19,6 @@
 [submodule "bundle/visual-increment"]
 	path = bundle/visual-increment
 	url = https://github.com/vim-scripts/visual-increment.git
-[submodule "bundle/gundo"]
-	path = bundle/gundo
-	url = https://github.com/vim-scripts/Gundo.git
 [submodule "bundle/html5"]
 	path = bundle/html5
 	url = https://github.com/vim-scripts/html5.vim.git
@@ -88,3 +85,6 @@
 [submodule "bundle/vim-gradle"]
 	path = bundle/vim-gradle
 	url = https://github.com/tfnico/vim-gradle.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = https://github.com/sjl/gundo.vim
