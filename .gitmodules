@@ -13,9 +13,6 @@
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/matchit"]
-	path = bundle/matchit
-	url = https://github.com/vim-scripts/matchit.zip.git
 [submodule "bundle/visual-increment"]
 	path = bundle/visual-increment
 	url = https://github.com/vim-scripts/visual-increment.git
