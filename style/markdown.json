@@ -1,0 +1,11 @@
+{
+    "default": true,
+    "header-style": { "style": "atx_closed" },
+    "line-length": {
+        "code_blocks": false,
+        "line_length": 80,
+        "tables": false
+    },
+    "ul-indent": { "indent": 4 },
+    "ul-style": { "style": "asterisk" }
+}

@@ -1,10 +1,4 @@
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set textwidth=79
 set number
-
 set foldmethod=syntax
 
 " Enable syntax highlighting
@@ -26,3 +20,10 @@ map <C-p> :call JCommentWriter()<CR>
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 set keywordprg=
+
+" Style settings
+" ==============================================================================
+set colorcolumn=80      " Highlight column at 80 characters.
+
+" Enable syntastic syntax checking.
+let g:syntastic_java_checkers = ['javac', 'checkstyle']

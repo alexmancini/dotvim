@@ -1,28 +1,29 @@
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-set textwidth=79
 set number
 
 let g:php_folding=2
 set foldmethod=syntax
 syntax enable
 
+" Code completion
+" ==============================================================================
 let php_sql_query=1
 let php_htmlInStrings=1
-
-"call LoadTags("doctrine")
-"call LoadTags("pd2")
-"call LoadTags("phpunit")
-"call LoadTags("zf1")
-
 set omnifunc=phpcomplete#CompletePHP
+inoremap <Nul> <C-x><C-o>
+inoremap <C-Space> <C-x><C-o>
 
 " Setup keybindings.
 noremap <F5> :w!<CR>:!php %<CR>
 
-" remove trailing whitespace on read and write.
+" Style settings
+" ==============================================================================
+set colorcolumn=80      " Highlight column at 80 characters.
+
+" Enable syntastic syntax checking.
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_args = "--report=csv --standard=\"$HOME/.vim/style/phpcs.xml\" -n"
+
+" Remove trailing whitespace on read and write.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 set keywordprg=pman

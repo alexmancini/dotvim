@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<ruleset name="alex">
+    <description>The coding standard for Alex.</description>
+
+    <!-- Project excludes -->
+    <exclude-pattern>*/docs/*</exclude-pattern>
+    <exclude-pattern>*/tmp/*</exclude-pattern>
+    <exclude-pattern>*/Proxy/*</exclude-pattern>
+
+    <!-- Include base rulesets. -->
+    <rule ref="Zend"/>
+    <rule ref="PSR2">
+        <exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody"/>
+    </rule>
+
+    <!-- Include most of the Squiz standard -->
+    <rule ref="Squiz">
+        <exclude name="Generic.ControlStructures.InlineControlStructure.NotAllowed"/>
+        <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame"/>
+        <exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman.BraceOnSameLine"/>
+        <exclude name="PEAR.ControlStructures.MultiLineCondition.CloseBracketNewLine"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket"/>
+        <exclude name="PEAR.Functions.FunctionCallSignature.MultipleArguments"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.KeyNotAligned"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed"/>
+        <exclude name="Squiz.Classes.ClassDeclaration.EndFileAfterCloseBrace"/>
+        <exclude name="Squiz.Classes.ClassFileName.NoMatch"/>
+        <exclude name="Squiz.Classes.ValidClassName.NotCamelCaps"/>
+        <exclude name="Squiz.Commenting.ClassComment.TagNotAllowed"/>
+        <exclude name="Squiz.Commenting.ClosingDeclarationComment.Missing"/>
+        <exclude name="Squiz.Commenting.FileComment"/>
+        <exclude name="Squiz.Commenting.FunctionComment.TagNotAllowed"/>
+        <exclude name="Squiz.Commenting.FunctionCommentThrowTag.WrongType"/>
+        <exclude name="Squiz.Commenting.VariableComment.TagNotAllowed"/>
+        <exclude name="Squiz.ControlStructures.SwitchDeclaration.BreakIndent"/>
+        <exclude name="Squiz.Files.FileExtension.ClassFound"/>
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceBeforeEquals"/>
+        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpaceAfterDefault"/>
+        <exclude name="Squiz.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+        <exclude name="Squiz.Objects.ObjectInstantiation.NotAssigned"/>
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/>
+        <exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
+        <exclude name="Squiz.PHP.CommentedOutCode.Found"/>
+        <exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedBool"/>
+        <exclude name="Squiz.PHP.DisallowInlineIf.Found"/>
+        <exclude name="Squiz.PHP.Heredoc.NotAllowed"/>
+        <exclude name="Squiz.PHP.InnerFunctions.NotAllowed"/>
+        <exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace.SpacingBeforeClose"/>
+        <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+    </rule>
+
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Squiz.Commenting.LongConditionClosingComment.Missing">
+        <severity>0</severity>
+    </rule>
+
+    <rule ref="Generic.PHP.DisallowShortOpenTag.EchoFound">
+        <severity>0</severity>
+    </rule>
+</ruleset>
