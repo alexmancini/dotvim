@@ -46,19 +46,19 @@ set wildignore=*.o,*~
 
 set laststatus=2
 set statusline=
-set statusline+=%1*\ ⚡\ %n\ %*
-set statusline+=%2*⮀%3*
+set statusline+=%1*\ ⓥ\ %n\ %*
+set statusline+=%2*▶%3*
 set statusline+=\ %{fugitive#statusline()}
-set statusline+=\ %4*⮀%*%5*
+set statusline+=\ %4*▶%*%5*
 set statusline+=\ %f\ %(%H%M%R%W\ %)%5*
-set statusline+=\ %6*⮁%5*
+set statusline+=\ %6*❯%5*
 set statusline+=%=
-set statusline+=%{&fenc}\ %6*⮁%5*\ %{&ff}
-set statusline+=\ %7*⮀%8*
+set statusline+=%{&fenc}\ %6*❯%5*\ %{&ff}
+set statusline+=\ %7*▶%8*
 set statusline+=%8.(%c%V%)\ @\ %l\ /\ %L
-set statusline+=\ %9*⮀
+set statusline+=\ %9*▶
 set statusline+=%5*%5P
-set statusline+=\ %{SyntasticStatuslineFlag()}
+set statusline+=\ %6*%{SyntasticStatuslineFlag()}%5*
 
 set laststatus=2
 
@@ -202,7 +202,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_enable_checkstyle=1
 let g:syntastic_checkstyle_php_standard=expand('~/.vim/style/php.codestyle.xml')
-let g:syntastic_stl_format = '[Syntax: %t!%E{ E:%e}%W{%E{,} W:%w}]'
+let g:syntastic_stl_format = '❰ %E{%e🔥}%W{%E{,} %w🔔} ❱ '
 
 " Taglist
 noremap <silent> <F8> :TagbarToggle<CR>
