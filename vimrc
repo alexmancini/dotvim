@@ -261,3 +261,6 @@ hi User6 guifg=#fffc00 guibg=#0a2fc4 ctermfg=yellow    ctermbg=darkblue
 hi User7 guifg=#0a2fc4 guibg=#3498db ctermfg=darkblue  ctermbg=white
 hi User8 guifg=#2c3e50 guibg=#3498db ctermfg=black     ctermbg=white
 hi User9 guifg=#3498db guibg=#0a2fc4 ctermfg=white     ctermbg=darkblue
+
+" Set filetype when opening twig files.
+au BufRead,BufNewFile *.twig set ft=twig

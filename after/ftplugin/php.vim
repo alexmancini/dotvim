@@ -27,12 +27,14 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 set keywordprg=pman
 
-" PHPDoc
-let g:pdv_cfg_Type = "mixed"
-let g:pdv_cfg_Package = ""
-let g:pdv_cfg_Version = "$id$"
-let g:pdv_cfg_Author = "TODO:NAME <TODO:EMAIL>"
-let g:pdv_cfg_Copyright = "2014 TODO:NAME"
-let g:pdv_cfg_License = "GNU GPLv3 {@link http://opensource.org/licenses/gpl-3.0.html}"
-let g:pdv_cfg_php4always = 0
-map <C-P> <ESC>:call PhpDocSingle()<CR>
+" Generate PHP documentation.
+let g:pdv_template_dir = $HOME."/.vim/templates/phpdoc"
+map <C-?> <ESC>:call pdv#DocumentCurrentLine()<CR>
+
+" Use enhanced PHP syntax highlighting within comments.
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+call PhpSyntaxOverride()
