@@ -10,4 +10,3 @@ endif
 
 " Use K to open the internal vim documentation.
 set keywordprg=:help
-UltiSnipsAddFiletypes vim

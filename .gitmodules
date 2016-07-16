@@ -55,9 +55,6 @@
 [submodule "bundle/vim-puppet"]
 	path = bundle/vim-puppet
 	url = git://github.com/rodjek/vim-puppet.git
-[submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
 [submodule "bundle/vim-scala"]
 	path = bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git

@@ -5,6 +5,3 @@ set number
 
 " Remove trailing whitespace.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
-
-" Use javascript snippets.
-UltiSnipsAddFiletypes javascript.html

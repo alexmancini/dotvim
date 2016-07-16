@@ -25,7 +25,4 @@ map <C-p> :call JCommentWriter()<CR>
 " Remove trailing whitespace on read and write.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
-" Use java snippets.
-UltiSnipsAddFiletypes java
-
 set keywordprg=

@@ -25,8 +25,6 @@ noremap <F5> :w!<CR>:!php %<CR>
 " remove trailing whitespace on read and write.
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
-UltiSnipsAddFiletypes php.html
-
 set keywordprg=pman
 
 " PHPDoc
