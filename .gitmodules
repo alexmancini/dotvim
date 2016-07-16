@@ -16,9 +16,6 @@
 [submodule "bundle/visual-increment"]
 	path = bundle/visual-increment
 	url = https://github.com/vim-scripts/visual-increment.git
-[submodule "bundle/precisejump"]
-	path = bundle/precisejump
-	url = https://github.com/vim-scripts/PreciseJump.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/vim-scripts/Tabular.git
