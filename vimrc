@@ -1,184 +1,204 @@
-set nocompatible
-
-set noswapfile
-
-" Use the Almighty Tim Pope's pathogen plugin for loading vim plugin bundles
-" stored in git.
+" Use pathogen for loading plugins.
 call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
-set confirm
+" General VIM settings
+" ==============================================================================
+" Compatibility settings:
+set cpoptions+=$        " When changing a line, preserve the original text.
+set nocompatible        " Do not retain compatibility with Vi.
 
-set tenc=utf-8
-set enc=utf-8
+" Color scheme:
+set background=dark     " Use a dark background color.
+colorscheme alex        " Load a colorscheme from ./colors.
 
-set viminfo='1000,f1,:1000,/1000
-
-set background=dark
-
-set backspace=indent,eol,start
-set cpoptions+=$
-
-set foldenable
-set foldmethod=marker
-set foldlevel=1
-set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-set foldcolumn=0
-set foldlevelstart=99
-
-set popt+=syntax:y
-
-set hlsearch
-set incsearch
-set ignorecase
-set infercase
-set smartcase
-set showfulltag
-
-set shiftround
-set shiftwidth=8
-set softtabstop=8
-set tabstop=8
-
-set wildmenu
+" Completion:
+set showfulltag         " Show full text of first matched completion.
+set wig+=*.DS_Store   " Ignore OSX directory metadata.
+set wig+=*.bmp        " Ignore bitmap files.
+set wig+=*.dll        " Ignore Windows DLL files.
+set wig+=*.jpg,*.jpeg " Ignore JPEG image files.
+set wig+=*.o          " Ignore object files.
+set wig+=*.out        " Ignore output files.
+set wig+=*.png        " Ignore PNG image files.
+set wig+=*.pyc        " Ignore Python compiled bytecode files.
+set wig+=*.pyo        " Ignore optimized Python bytecode files.
+set wig+=*.sw?        " Ignore VIM swap files.
+set wig+=*~           " Ignore VIM backup files.
+set wig+=.git         " Ignore git directory.
+set wildmenu            " Use enhanced completion menu.
 set wildmode=list:longest,full
-set wildignore=*.o,*~
 
-set laststatus=2
-set statusline=
-set statusline+=%1*\ ⓥ\ %n\ %*
-set statusline+=%2*▶%3*
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=\ %4*▶%*%5*
-set statusline+=\ %f\ %(%H%M%R%W\ %)%5*
-set statusline+=\ %6*❯%5*
-set statusline+=%=
-set statusline+=%{&fenc}\ %6*❯%5*\ %{&ff}
-set statusline+=\ %7*▶%8*
-set statusline+=%8.(%c%V%)\ @\ %l\ /\ %L
-set statusline+=\ %9*▶
-set statusline+=%5*%5P
-set statusline+=\ %6*%{SyntasticStatuslineFlag()}%5*
+" Development settings:
+filetype plugin indent on   " Turn on filetype indentation.
+syntax on                   " Enable syntax highlighting.
+set grepformat=%f:%l:%c:%m  " Use ACK instead of grep.
+set grepprg=ack\ --smart-case\ --nogroup\ --column\ $*
 
-set laststatus=2
+" Folding settings:
+set foldlevel=1
+set foldlevelstart=99   " Open buffer with all folds expanded.
+set foldmethod=marker   " Use marker to identify folds.
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
-set ruler
+" General settings:
+set autochdir           " Change directories when opening or switching buffers.
+set confirm             " Confirm file overwrite and other operations.
+set encoding=utf-8      " Use UTF8 encoding.
+set lazyredraw          " Avoid redrawing window when executing macros.
+set mouse=a             " Allow selecting visual regions using the mouse.
+set noerrorbells        " Disable annoying error noises.
+set nohidden            " Unload buffers when abandoned.
+set noswapfile          " Disable the use of a swapfile.
+set notildeop           " Allow tilde to operate on single characters.
+set novisualbell        " Disable annoying visual error notifications,
+set shortmess=aoOtTIA   " Ignore long messages from VIM.
+set showmatch           " Briefly highlight matching brackets.
+set splitbelow          " Put split windows below the current buffer.
+set splitright          " Put split windows to the right of the current buffer.
+set swb=usetab,newtab   " Open buffers in the current tab, or a new one.
+set termencoding=utf-8  " Use UTF8 encoding.
+set ttyfast             " Terminal connections are (almost) always fast now.
+set undolevels=1000     " The number of undo levels to preserve.
+set viminfo=            " Do not maintain editor state information.
+set warn                " Display error if buffer is modified.
 
-set lazyredraw
-set ttyfast
+" Indentation:
+set copyindent          " Use the same indent level on paste.
+set expandtab           " Insert spaces when using the tab or indentation keys.
+set preserveindent      " Preserve as much indentation as possible.
+set shiftround          " Round indent to nearest multiple of the shiftwidth.
+set shiftwidth=4        " The number of spaces to use for an indent level.
+set softtabstop=4       " The number of spaces to use for indentation.
+set tabstop=4           " The number of spaces to use for the tab character.
 
-set notildeop
-set shortmess=aoOtTIA
-set showcmd
-set showmatch
-set undolevels=1000
+" Display whitespace visually.
+if (&termencoding == "utf-8")
+    set listchars=tab:»·,trail:·,extends:…,nbsp:‗
+else
+    set listchars=tab:>-,trail:.,extends:>,nbsp:_
+endif
 
-set noerrorbells
-set novisualbell
-set visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
+" Keybindings:
+let mapleader=','       " Use , as the <Leader> binding.
+set pastetoggle=<F12>   " Toggle paste mode easier.
 
-set warn
-set whichwrap=b,s,h,l,<,>,[,]
+" Movement:
+set bs=indent,eol,start " Allow backspace to be used for navigation.
+set scrolljump=5        " Lines to scroll when moving off screen.
+set scrolloff=3         " Show 3 lines of context around the cursor.
+set sidescrolloff=4     " Show 4 columns of context around the cursor.
+set ww=b,s,h,l,<,>,[,]  " Allow keyboard navigation to wrap over lines.
 
-set backupdir=~/.vim/tmp,.,~
-set directory=~/.vim/tmp,.,~
+" Print options:
+set popt+=number:y      " Display line numbers when printing files.
+set popt+=syntax:y      " Use syntax highlighting when printing files.
 
-set autochdir
-set scrolljump=5
-set scrolloff=3
-set sidescrolloff=4
+" Searching
+set hlsearch            " Highlight search matches.
+set ignorecase          " Ignore case when matching (see also: smartcase)
+set incsearch           " Highlight search matches while typing.
+set infercase           " Infer case when searching for uppercase letters.
+set smartcase           " Override ignorecase when search pattern is uppercase.
 
-set pastetoggle=<F12>
+" Status line options:
+set laststatus=2        " Show status line for all windows, splits, etc.
+set ruler               " Display the line and column number of the cursor.
 
-" Unload buffers when abandoned.
-set nohidden
-
-set fillchars=fold:-
-
-set switchbuf=usetab,newtab
-
-" From Matthew Weier O'Phinney's vimrc
-function! LoadTags(file)
-   let tagspath = $HOME . "/.vim.tags/" . a:file
-   let tagcommand = 'set tags+=' . tagspath
-   execute tagcommand
-endfunction
-command! -nargs=1 Ltag :call LoadTags("<args>")
-
-
-" General configuration
-let mapleader=','
-" use w!! to write the file through sudo without leaving vim.
-cmap w!! %!sudo tee > /dev/null %
-set grepprg=grep\ -nH\ $*
-
-" Set reasonable defaults for indentation
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set copyindent                              " Use same indent level on paste
-set preserveindent
-
-" Bind Ctrl-Space to autocompletion.
-inoremap <Nul> <C-n>
-
-
-" Buffer navigation
-imap <C-B> <ESC>:buffers<CR>
-nmap <C-B> :buffers<CR>
-noremap <leader>bp :bprev<CR>
-noremap <leader>bn :bnext<CR>
-noremap <leader>q :bwipeout<CR>
-
-
-" Tab navigation
-" Bind page-up/down to tab prev/next
-noremap [6^   <Esc>:tabn<CR>
-noremap [5^	<Esc>:tabp<CR>
-noremap <C-T>	<Esc>:tabnew<CR>
-noremap <A-C-T>	<Esc>:tab sball<CR>
+" Status line layout:
+set statusline=                                         " Clear status line.
+set statusline+=%1*\ ⓥ\ \ %n\ %*                        " Buffer number
+set statusline+=%2*▶%3*                                 " Decorative arrow.
+set statusline+=\ %{fugitive#statusline()}              " Git status.
+set statusline+=\ %4*▶%*%5*                             " Decorative arrow.
+set statusline+=\ %f\ %(%H%M%R%W\ %)%5*                 " File information.
+set statusline+=\ %6*❯%5*                               " Decorative arrow.
+set statusline+=%=                                      " Fill space.
+set statusline+=%{&fenc}\ %6*❯%5*\ %{&ff}               " File encoding information.
+set statusline+=\ %7*▶%8*                               " Decorative arrow.
+set statusline+=%8.(%c%V%)\ @\ %l\ /\ %L                " Cursor position.
+set statusline+=\ %9*▶                                  " Decorative arrow.
+set statusline+=%5*%5P                                  " Percent of file.
+set statusline+=\ %6*%{SyntasticStatuslineFlag()}%5*    " Syntax errors.
 
 
-" Command mode abbreviations
-" FIXME: This breaks /Word-with-a-capital-W
-"cnoreabbrev W w
-"cnoreabbrev Wq wq
-" Death to the shift key!
+" Custom abbreviations:
+" ==============================================================================
+" License strings:
+iabbrev L_BSD  https://opensource.org/licenses/BSD-3-Clause BSD License
+iabbrev L_GPL  https://opensource.org/licenses/GPL-3.0 GNU General Public License
+iabbrev L_LGPL https://opensource.org/licenses/LGPL-3.0 GNU Lesser General Public License
+iabbrev L_MIT  https://opensource.org/licenses/MIT MIT License
+
+
+" Custom keybindings:
+" ==============================================================================
+" Correct frequently mistyped commands.
+command! E e
+command! Q q
+command! QA qa
+command! Qa qa
+command! W w
+command! WQ wq
+command! Wq wq
+
+" Bind ` to the escape key to compensate for Apple keyboards.
+noremap ` <Esc>
+
+" Allow using ; to enter command mode.
 nnoremap ; :
 
-" Development settings
-syntax on
-filetype plugin indent on
-set tags=./tags;/
+" Create a keybinding to sudo write the current buffer.
+cmap w!! %!sudo tee > /dev/null %
 
+" Autocompletion keybindings.
+inoremap <Nul> <C-n>
+inoremap <C-Space> <C-n>
+inoremap <S-C-Space> <C-N>
 
-" Development keybindings
-" Surround with ' or "
-nmap <leader>' ysiw'
-nmap <leader>" ysiw"
-nmap <leader>c :cwindow<CR>
+" Buffer navigation
+imap    <C-B> <ESC>:buffers<CR>
+nmap    <C-B> :buffers<CR>
+noremap <C-H> :bprev<CR>
+noremap <C-L> :bnext<CR>
 
-" Misc. keybindings
-" Edit g?vimrc file
-nmap <leader>v :tabedit $MYVIMRC<CR>
+" Bind page-up/down to tab prev/next
+noremap [5^ <Esc>:tabp<CR>
+noremap [6^ <Esc>:tabn<CR>
+
+" Open all buffers in tabs.
+noremap <C-_> <Esc>:tab sball<CR>
+
+" Open a new tab with Ctrl-T.
+noremap <C-T> <Esc>:tabnew<CR>
+
+" Edit g/vimrc files in a new tab.
 nmap <leader>gv :tabedit $MYGVIMRC<CR>
-" Toggle pseduo-display of whitespace characters.
-set listchars=tab:>-,trail:.,extends:>,nbsp:_
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" Bash-like Line and command navigation.
+cnoremap <C-A> <home>
+cnoremap <C-E> <end>
+inoremap <C-A> <esc>I
+inoremap <C-E> <esc>A
+
+" Toggle visual display of whitespace characters.
 nmap <silent> <leader>$ :set nolist!<CR>
-" Split the screen and search for text under cursor.
-nmap <silent> <leader>] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" Sort the given visual selection
+
+" Sort the given visual selection" Sort the given visual selection
 vmap <leader>s :!sort<CR>
+
+" Allow using ; to enter command mode.
+nnoremap ; :
 
 
 " Plugin configuration
+" ==============================================================================
 " CtrlP
 noremap <Leader><Leader> :CtrlP<CR>
 
 " Fugitive
-noremap <A-g>	<Esc>:Gstatus<CR>
+noremap <A-g> <Esc>:Gstatus<CR>
 
 " Gundo
 noremap <C-Z> :GundoToggle<CR>
@@ -199,65 +219,31 @@ vmap '' S'JxJx
 
 " Syntastic automatic syntax checking on save
 let g:syntastic_enable_signs=1
-let g:syntastic_stl_format = '❰ %E{%e🔥}%W{%E{,} %w🔔} ❱ '
+if (&termencoding == "utf-8")
+    let g:syntastic_stl_format='❰ %E{%e🔥 }%W{%E{ ⋮ }%w🔔 } ❱ '
+    let syntastic_error_symbol='🔥'
+    let syntastic_warning_symbol='🔔'
+    let syntastic_style_error_symbol='💥'
+    let syntastic_style_warning_symbol='⛈'
+else
+    let g:syntastic_stl_format='< %E{E: %e}%W{%E{; }W: %w} > '
+endif
 
 " Taglist
 noremap <silent> <F8> :TagbarToggle<CR>
 noremap <leader>l :TagbarToggle<CR>
 
 " Tabular
-" align => columns,
-" that_are => spaced,
-" like => this,
 vmap <leader>> :Tab /=><CR>
 vmap <leader>= :Tab /=<CR>
 vmap <leader>: :Tab /:<CR>
 vmap <leader>  :Tab / <CR>
 
-" Setup the color scheme
-set background=dark
-colorscheme alex
+" Set filetype when opening twig files.
+autocmd BufRead,BufNewFile *.twig set ft=twig
 
 " Load up a template if it exists.
 autocmd! BufNewFile * silent! 0r ~/.vim/templates/template.%:e
 
-" Command aliases
-command! Q q
-command! Qa qa
-command! W w
-command! E e
-command! WQ wq
-command! Wq wq
-command! W w
-command! E e
-
-" Additions from Damiam Conway's talk at OSCON 2013.
-" http://www.youtube.com/watch?v=aHm36-na4-4
-
-" This rewires n and N to do the highlighing...
-" nnoremap <silent> n   n:call HLNext(0.4)<cr>
-" nnoremap <silent> N   N:call HLNext(0.4)<cr>
-" function! HLNext (blinktime)
-"     let [bufnum, lnum, col, off] = getpos('.')
-"     let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
-"     let target_pat = '\c\%#'.@/
-"     let ring = matchadd('WhiteOnRed', target_pat, 101)
-"     redraw
-"     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-"     call matchdelete(ring)
-"     redraw
-" endfunction
-
-" Statusline
-hi User1 guifg=#000000 guibg=#00c120 ctermfg=black     ctermbg=darkgreen
-hi User2 guifg=#00c120 guibg=#95a5a6 ctermfg=darkgreen ctermbg=grey
-hi User3 guifg=#0a2fc4 guibg=#95a5a6 ctermfg=darkblue  ctermbg=grey
-hi User4 guifg=#95a5a6 guibg=#0a2fc4 ctermfg=grey      ctermbg=darkblue
-hi User5 guifg=#ffffff guibg=#0a2fc4 ctermfg=white     ctermbg=darkblue
-hi User6 guifg=#fffc00 guibg=#0a2fc4 ctermfg=yellow    ctermbg=darkblue
-hi User7 guifg=#0a2fc4 guibg=#3498db ctermfg=darkblue  ctermbg=white
-hi User8 guifg=#2c3e50 guibg=#3498db ctermfg=black     ctermbg=white
-hi User9 guifg=#3498db guibg=#0a2fc4 ctermfg=white     ctermbg=darkblue
-
-" Set filetype when opening twig files.
-au BufRead,BufNewFile *.twig set ft=twig
+" Resize splits when resizing VIM.
+autocmd VimResized * :wincmd=

@@ -89,3 +89,8 @@ hi User9 guifg=#3498db guibg=#0a2fc4 ctermfg=white     ctermbg=darkblue
 
 " Additional highlighting for search
 hi WhiteOnRed   guifg=#cccccc   guibg=#880000   ctermfg=white   ctermbg=red
+
+" Syntastic error/warning symbol colors
+hi! link SignColumn LineNr
+hi SyntasticErrorSign                           ctermfg=red     ctermfg=black
+hi SyntasticWarningSign                         ctermfg=yellow  ctermfg=black
